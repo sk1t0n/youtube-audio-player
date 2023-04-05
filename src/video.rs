@@ -2,7 +2,7 @@ use std::process::exit;
 
 use rustube::{url::Url, Error, Id, IdBuf, Stream, Video};
 
-pub async fn get_audio_stream_url(video_id: &str) -> String {
+pub async fn get_audio_stream_url(video_id: String) -> String {
     let id: IdBuf = get_id(video_id);
     let video: Video = get_video(id).await;
     let url: &Url = get_url(&video);
@@ -30,10 +30,10 @@ pub async fn get_audio_stream_url(video_id: &str) -> String {
 
     let audio_stream_url: String = format!("https://{domain}{path}?{query}");
 
-    return audio_stream_url;
+    audio_stream_url
 }
 
-fn get_id(video_id: &str) -> IdBuf {
+fn get_id(video_id: String) -> IdBuf {
     let url: String = format!("https://www.youtube.com/watch?v={video_id}");
     let id: Result<Id, Error> = Id::from_raw(&url);
 
@@ -45,7 +45,7 @@ fn get_id(video_id: &str) -> IdBuf {
         }
     };
 
-    return id.into_owned();
+    id.into_owned()
 }
 
 async fn get_video(id: IdBuf) -> Video {
@@ -80,14 +80,14 @@ fn get_url(video: &Video) -> &Url {
 
     let url: &Url = &audio_stream.signature_cipher.url;
 
-    return url;
+    url
 }
 
 #[cfg(test)]
 mod tests {
     #[test]
     fn get_id() {
-        let video_id = "kUft3eH1fy0";
+        let video_id = String::from("kUft3eH1fy0");
         super::get_id(video_id);
     }
 }

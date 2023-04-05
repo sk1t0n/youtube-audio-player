@@ -11,8 +11,14 @@ The application can to play the YouTube audio stream using the VLC media player.
 ## Usage
 
 ```sh
-# video_id - the ID of the video you want
+# video_id - the ID of the YouTube video you want
 ./target/release/youtube-audio-player video_id
+
+# Start the VLC media player in the command line mode
+./target/release/youtube-audio-player video_id -m 2
+
+# Show help
+./target/release/youtube-audio-player -h
 ```
 
 ## License
