@@ -41,7 +41,7 @@ fn get_id(video_id: String) -> IdBuf {
         Ok(id) => id,
         Err(_) => {
             println!("Error: the video ID is incorrect.");
-            exit(1);
+            exit(0);
         }
     };
 

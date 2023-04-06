@@ -5,11 +5,7 @@ use std::{
 
 /// Starts the VLC media player using the received url.
 pub fn play(url: String, mode: u8) {
-    let mut program = "vlc";
-
-    if mode == 2 {
-        program = "cvlc";
-    }
+    let program = if mode == 2 { "cvlc" } else { "vlc" };
 
     let result: Result<Output, Error> = Command::new(program).arg(url).output();
 
