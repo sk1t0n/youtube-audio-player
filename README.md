@@ -2,6 +2,8 @@
 
 The application can to play the YouTube audio stream using the VLC media player.
 
+![screenshot](screenshot.png)
+
 ## Install
 
 1. [Install Rust and Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
